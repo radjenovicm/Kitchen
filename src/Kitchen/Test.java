@@ -30,29 +30,29 @@ public class Test {
         oats.ingredientsList.add(new WeightedIngredient("Nuts", 10, 0.2));
         oats.ingredientsList.add(new WeightedIngredient("Milk", 1.05, 0.15));
 
-        var carbonare = new RecipesBase("Carbonare", RecipeLevel.MEDIUM);
-        carbonare.ingredientsList.add(new WeightedIngredient("Spaghetti", 1.5, 0.15));
-        carbonare.ingredientsList.add(new WeightedIngredient("Eggs", 0.15, 2));
-        carbonare.ingredientsList.add(new WeightedIngredient("Bacon", 6, 0.1));
-        carbonare.ingredientsList.add((new WeightedIngredient("Parmesan", 9, 0.03)));
+        var carbonara = new RecipesBase("Carbonara", RecipeLevel.MEDIUM);
+        carbonara.ingredientsList.add(new WeightedIngredient("Spaghetti", 1.5, 0.15));
+        carbonara.ingredientsList.add(new WeightedIngredient("Eggs", 0.15, 2));
+        carbonara.ingredientsList.add(new WeightedIngredient("Bacon", 6, 0.1));
+        carbonara.ingredientsList.add((new WeightedIngredient("Parmesan", 9, 0.03)));
 
         var gnocchi = new RecipesBase("Gnocchi", RecipeLevel.PRO);
-        carbonare.ingredientsList.add(new WeightedIngredient("Potato Gnocchi", 12, 0.5));
-        carbonare.ingredientsList.add(new WeightedIngredient("Butter", 3.0, 0.125));
-        carbonare.ingredientsList.add(new WeightedIngredient("Spaghetti", 1.5, 0.15));
-        carbonare.ingredientsList.add(new WeightedIngredient("Sage leaves", 24.95, 0.03));
-        carbonare.ingredientsList.add(new WeightedIngredient("Garlic", 4.5, 0.01));
-        carbonare.ingredientsList.add(new WeightedIngredient("Baby Spinach", 2, 0.12));
-        carbonare.ingredientsList.add(new WeightedIngredient("Parmesan", 9, 0.1));
-        carbonare.ingredientsList.add(new WeightedIngredient("Walnuts", 8.85, 0.05));
+        gnocchi.ingredientsList.add(new WeightedIngredient("Potato Gnocchi", 12, 0.5));
+        gnocchi.ingredientsList.add(new WeightedIngredient("Butter", 3.0, 0.125));
+        gnocchi.ingredientsList.add(new WeightedIngredient("Spaghetti", 1.5, 0.15));
+        gnocchi.ingredientsList.add(new WeightedIngredient("Sage leaves", 24.95, 0.03));
+        gnocchi.ingredientsList.add(new WeightedIngredient("Garlic", 4.5, 0.01));
+        gnocchi.ingredientsList.add(new WeightedIngredient("Baby Spinach", 2, 0.12));
+        gnocchi.ingredientsList.add(new WeightedIngredient("Parmesan", 9, 0.1));
+        gnocchi.ingredientsList.add(new WeightedIngredient("Walnuts", 8.85, 0.05));
 
         var salmon = new RecipesBase("Salmon Wellington", RecipeLevel.HARD);
-        carbonare.ingredientsList.add(new WeightedIngredient("Salmon", 12.95, 0.5));
-        carbonare.ingredientsList.add(new WeightedIngredient("Dijon Mustard", 2.0, 0.025));
-        carbonare.ingredientsList.add(new WeightedIngredient("Pastry", 5.47, 0.45));
-        carbonare.ingredientsList.add(new WeightedIngredient("Eggs", 0.15, 1));
-        carbonare.ingredientsList.add(new WeightedIngredient("Butter", 3.0, 0.125));
-        carbonare.ingredientsList.add(new WeightedIngredient("Parmesan", 9, 0.1));
+        salmon.ingredientsList.add(new WeightedIngredient("Salmon", 12.95, 0.5));
+        salmon.ingredientsList.add(new WeightedIngredient("Dijon Mustard", 2.0, 0.025));
+        salmon.ingredientsList.add(new WeightedIngredient("Pastry", 5.47, 0.45));
+        salmon.ingredientsList.add(new WeightedIngredient("Eggs", 0.15, 1));
+        salmon.ingredientsList.add(new WeightedIngredient("Butter", 3.0, 0.125));
+        salmon.ingredientsList.add(new WeightedIngredient("Parmesan", 9, 0.1));
 
 
         ArrayList<RecipesBase> theCookBook = new ArrayList<>();
@@ -60,10 +60,13 @@ public class Test {
         theCookBook.add(pancakes);
         theCookBook.add(meatBalls);
         theCookBook.add(oats);
-        theCookBook.add(carbonare);
+        theCookBook.add(carbonara);
         theCookBook.add(salmon);
         theCookBook.add(gnocchi);
 
+        ArrayList<RecipesBase> favourites = new ArrayList<>();
+        favourites.add(carbonara);
+        favourites.add(omelette);
 
         var fridge1 = new Fridge();
         fridge1.ingredientsList.add(new WeightedIngredient("Eggs", 0.15, 10));
@@ -78,14 +81,13 @@ public class Test {
         fridge1.ingredientsList.add(new WeightedIngredient("Flour", 0.5, 0.2));
         fridge1.ingredientsList.add(new WeightedIngredient("Salmon", 12.95, 0.5));
         fridge1.ingredientsList.add(new WeightedIngredient("Dijon Mustard", 2.0, 0.75));
-        fridge1.ingredientsList.add(new WeightedIngredient("Pastry", 5.47, 1.2));
+        fridge1.ingredientsList.add(new WeightedIngredient("Pastry", 5.45, 1.2));
         fridge1.ingredientsList.add(new WeightedIngredient("Parmesan", 9.0, 0.35));
         fridge1.ingredientsList.add(new WeightedIngredient("Beef", 8.0, 0.75));
 /////////////////////////////////////////////////////////////////////////////////
 
         int num;
         Scanner sc = new Scanner(System.in);
-
         do {
             System.out.println("---------MAIN MENU---------");
             System.out.println("0 --- EXIT PROGRAM ");
@@ -93,6 +95,7 @@ public class Test {
             System.out.println("2 --- Enter Recipes Menu ");
             System.out.println("3 --- Check what you can make with available ingredients ");
             System.out.println("4 --- Check what you can make with your budget ");
+            System.out.println("5 --- List of Favourites ");
 
             num = Integer.parseInt(sc.nextLine());
             switch (num) {
@@ -128,7 +131,22 @@ public class Test {
                         System.out.println("8 --- BACK TO MAIN MENU  ");
                         num = Integer.parseInt(sc.nextLine());
                         switch (num) {
-                            case 1 -> System.out.println(theCookBook);
+                            case 1 -> {
+                                for (var recipe : theCookBook) {
+                                    System.out.println();
+                                    System.out.println(recipe.getName() + ":");
+                                    System.out.println("-".repeat(36));
+                                    System.out.printf("%-30s%6s\n", "INGREDIENT", "QTY");
+                                    for (int i = 0; i < recipe.ingredientsList.size(); i++) {
+                                        System.out.printf("%-30s%6.2f\n", recipe.ingredientsList.get(i).getName(), recipe.ingredientsList.get(i).getWeight());
+                                    }
+                                    System.out.println("-".repeat(36));
+                                    System.out.printf("%-30s%6.2f\n", recipe.getName() + " price($):", recipe.getTotalPrice());
+                                    System.out.println("-".repeat(36));
+                                }
+                            }
+
+
                             case 2 -> {
                                 System.out.println("Enter recipe name for adding ingredient");
                                 String findName = sc.nextLine();
@@ -211,6 +229,21 @@ public class Test {
                         if (recipe.getTotalPrice() <= budget) {
                             System.out.println(recipe);
                         }
+                    }
+                    break;
+                case 5:
+
+                    for (var recipe : favourites) {
+                        System.out.println();
+                        System.out.println(recipe.getName() + ":");
+                        System.out.println("-".repeat(36));
+                        System.out.printf("%-30s%6s\n", "INGREDIENT", "QTY");
+                        for (int i = 0; i < recipe.ingredientsList.size(); i++) {
+                            System.out.printf("%-30s%6.2f\n", recipe.ingredientsList.get(i).getName(), recipe.ingredientsList.get(i).getWeight());
+                        }
+                        System.out.println("-".repeat(36));
+                        System.out.printf("%-30s%6.2f\n", recipe.getName() + " price($):", recipe.getTotalPrice());
+                        System.out.println("-".repeat(36));
                     }
                     break;
             }
